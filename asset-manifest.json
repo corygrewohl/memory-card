@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/memory-card/static/css/main.3a64059f.css",
+    "main.js": "/memory-card/static/js/main.fc2710ef.js",
+    "static/js/787.af63858b.chunk.js": "/memory-card/static/js/787.af63858b.chunk.js",
+    "static/media/ds3_background.jpg": "/memory-card/static/media/ds3_background.38db7c1d035f82053080.jpg",
+    "static/media/soul_of_cinder.jpg": "/memory-card/static/media/soul_of_cinder.718beb5179422a88161b.jpg",
+    "static/media/aldrich.png": "/memory-card/static/media/aldrich.c0f5635f8ff44a93fd1d.png",
+    "static/media/nameless_king.png": "/memory-card/static/media/nameless_king.8902461d445fef0d471e.png",
+    "static/media/dancer.png": "/memory-card/static/media/dancer.57b29cce6d71d0821bb4.png",
+    "static/media/pontiff.png": "/memory-card/static/media/pontiff.eef0ba475d3963d1dd18.png",
+    "static/media/yhorm.png": "/memory-card/static/media/yhorm.25b570a31478444ef471.png",
+    "static/media/iudex_gundyr.png": "/memory-card/static/media/iudex_gundyr.444e7b153147e863d97d.png",
+    "static/media/dragonslayer_armor.png": "/memory-card/static/media/dragonslayer_armor.5ceb58cf7205ecc10bcd.png",
+    "static/media/lorian_lothric.png": "/memory-card/static/media/lorian_lothric.e84995879da1fe7e8a2e.png",
+    "static/media/abyss_watchers.png": "/memory-card/static/media/abyss_watchers.1aefce8fdba383ea078c.png",
+    "index.html": "/memory-card/index.html",
+    "main.3a64059f.css.map": "/memory-card/static/css/main.3a64059f.css.map",
+    "main.fc2710ef.js.map": "/memory-card/static/js/main.fc2710ef.js.map",
+    "787.af63858b.chunk.js.map": "/memory-card/static/js/787.af63858b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a64059f.css",
+    "static/js/main.fc2710ef.js"
+  ]
+}
