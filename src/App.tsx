@@ -20,12 +20,82 @@ function App() {
   const [currentScore, setCurrentScore] = useState<number>(0);
   const [maxScore, setMaxScore] = useState<number>(0);
 
+  const bosses = [
+    {
+      name: 'Soul of Cinder',
+      image: SoulOfCinder,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'SOC']}),
+    },
+    {
+      name: 'Abyss Watchers',
+      image: AbyssWatchers,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'AW']}),
+    },
+    {
+      name: 'Aldrich, Devourer of Gods',
+      image: Aldrich,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'AL']}),
+    },
+    {
+      name: 'Dancer of the Boreal Valley',
+      image: Dancer,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'DA']}),
+    },
+    {
+      name: 'Dragonslayer Armour',
+      image: Dragonslayer,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'DR']}),
+    },
+    {
+      name: 'Iudex Gundyr',
+      image: Iudex,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'IU']}),
+    },
+    {
+      name: 'Lothric, Younger Prince',
+      image: Lorian,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'LO']}),
+    },
+    {
+      name: 'Nameless King',
+      image: Nameless,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'NA']}),
+    },
+    {
+      name: 'Pontiff Sulyvahn',
+      image: Pontiff,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'PO']}),
+    },
+    {
+      name: 'Yhorm the Giant',
+      image: Yhorm,
+      handleClick: () => setClicked({clickedItems: [...clicked.clickedItems, 'YH']}),
+    },
+  ]
+
+  function shuffle(array: any[]){
+    let currentIndex = array.length;
+    let randomIndex;
+    
+    while(currentIndex != 0){
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+      
+    }
+    return array;
+  }
+
   //For clicking
   useEffect(() => {
     console.log(clicked.clickedItems)
     if((new Set(clicked.clickedItems)).size !== clicked.clickedItems.length){
       setCurrentScore(0);
+      setClicked({clickedItems: []})
     } else {
+       // FIXME: This runs on initial render so it always makes current score 1.
       setCurrentScore(currentScore + 1);
     }
     
@@ -33,32 +103,27 @@ function App() {
 
   //For current score. Only runs if currentScore changes
   useEffect(() => {
-    console.log('current has been updated')
-    console.log(currentScore)
+    if(currentScore > maxScore){
+      setMaxScore(currentScore - 1)
+    }
   }, [currentScore])
-
-  //For max score. Only runs if maxScore changes
-  useEffect(() => {
-    console.log('max has been updated')
-  }, [maxScore])
 
   return (
     <div>
       <div className="header">
         <h2 className="header-title">Dark Souls III Memory Card Game</h2>
-        <Score />
+        {/* FIXME: I'm literally just subtracting 1 from the currentScore because useEffect is not working. See note on first useEffect */}	
+        <h2>Max Score: {maxScore} Current Score: {currentScore - 1}</h2>	
+        {/* <Score /> */}
       </div>
       <div className="main-container">
-        <Card name='Soul of Cinder' image={SoulOfCinder} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'SOC']})} />
-        <Card name='Abyss Watchers' image={AbyssWatchers} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'AW']})} />
-        <Card name='Aldrich, Devourer of Gods' image={Aldrich} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'AL']})}/>
-        <Card name='Dancer of the Boreal Valley' image={Dancer} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'DA']})}/>
-        <Card name='Dragonslayer Armour' image={Dragonslayer} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'DR']})}/>
-        <Card name='Iudex Gundyr' image={Iudex} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'IU']})}/>
-        <Card name='Lothric, Younger Prince' image={Lorian} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'LO']})}/>
-        <Card name='Nameless King' image={Nameless} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'NA']})}/>
-        <Card name='Pontiff Sulyvahn' image={Pontiff} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'PO']})}/>
-        <Card name='Yhorm the Giant' image={Yhorm} handleClick={() => setClicked({clickedItems: [...clicked.clickedItems, 'YH']})}/>
+
+        {shuffle(bosses).map((boss) => {
+          return (
+            <Card name={boss.name} image={boss.image} handleClick={boss.handleClick} />
+            
+          )
+        })}
       </div>
     
     </div>
